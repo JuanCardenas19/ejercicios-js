@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistente Virtual del Cine</title>
+</head>
+<body>
+
+    <h2>Asistente Virtual del Cine</h2>
+    <label for="edad">Ingrese su edad: </label>
+    <input type="number" id="edad" placeholder="Edad" />
+    <button onclick="recomendarPelicula()">Obtener recomendación</button>
+
+    <p id="recomendacion"></p>
+
+    <script>
+        function recomendarPelicula() {
+            
+            let edad = document.getElementById("edad").value;
+
+            
+            if (edad === "" || isNaN(edad) || edad < 0) {
+                document.getElementById("recomendacion").innerText = "Por favor ingrese una edad válida.";
+                return;
+            }
+
+            edad = parseInt(edad);  
+
+            let recomendacion = "";
+
+            
+            switch (true) {
+                case (edad < 7):
+                    recomendacion = "Te recomendamos películas animadas y educativas, como 'Toy Story' o 'Buscando a Nemo'.";
+                    break;
+                case (edad >= 7 && edad <= 17):
+                    recomendacion = "Puedes ver películas familiares como 'Harry Potter', 'La era del hielo' o 'Shrek'.";
+                    break;
+                case (edad >= 18 && edad <= 30):
+                    recomendacion = "Para ti tenemos una variedad de géneros: 'Avengers', 'Inception' (Origen), 'Deadpool' o 'The Pursuit of Happyness'.";
+                    break;
+                case (edad >= 31):
+                    recomendacion = "Te recomendamos películas clásicas o dramas, como 'Forrest Gump', 'La lista de Schindler' o 'The Godfather'.";
+                    break;
+                default:
+                    recomendacion = "Edad no válida.";
+                    break;
+            }
+
+            
+            document.getElementById("recomendacion").innerText = recomendacion;
+        }
+    </script>
+
+</body>
+</html>
+

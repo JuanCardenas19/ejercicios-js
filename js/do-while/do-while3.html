@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Biblioteca</title>
+</head>
+<body>
+
+    <h2>Registro de Libros</h2>
+    <button onclick="registrarLibros()">Iniciar Registro de Libros</button>
+
+    <div id="listaLibros"></div>
+
+    <script>
+        function registrarLibros() {
+            let librosRegistrados = "";  
+            let continuar = true;  
+
+            do {
+                
+                let titulo = prompt("Ingrese el título del libro:");
+                if (titulo === null || titulo.trim() === "") {
+                    alert("Por favor, ingrese un título válido.");
+                    continue;
+                }
+
+                
+                let autor = prompt("Ingrese el autor del libro:");
+                if (autor === null || autor.trim() === "") {
+                    alert("Por favor, ingrese un autor válido.");
+                    continue;
+                }
+
+                
+                let paginas = parseInt(prompt("Ingrese el número de páginas del libro:"));
+                if (isNaN(paginas) || paginas <= 0) {
+                    alert("Por favor, ingrese un número de páginas válido.");
+                    continue;
+                }
+
+                
+                librosRegistrados += `<p><strong>Título:</strong> ${titulo} <br><strong>Autor:</strong> ${autor} <br><strong>Número de páginas:</strong> ${paginas}</p><hr>`;
+
+                
+                continuar = confirm("¿Desea ingresar otro libro?");
+                
+            } while (continuar); 
+
+            
+            if (librosRegistrados === "") {
+                document.getElementById("listaLibros").innerHTML = "<p>No se registraron libros.</p>";
+            } else {
+                document.getElementById("listaLibros").innerHTML = "<h3>Libros Registrados:</h3>" + librosRegistrados;
+            }
+        }
+    </script>
+
+</body>
+</html>

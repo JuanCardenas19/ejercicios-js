@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Ventas</title>
+</head>
+<body>
+
+    <h2>Registro de Ventas</h2>
+    <button onclick="registrarVentas()">Iniciar Registro de Ventas</button>
+
+    <p id="resumen"></p>
+
+    <script>
+        function registrarVentas() {
+            let totalVentas = 0;  
+            let productosVendidos = "";  
+            let continuar = true;  
+            do {
+                
+                let producto = prompt("Ingrese el nombre del producto vendido:");
+                if (producto === null || producto.trim() === "") {
+                    alert("Por favor, ingrese un nombre válido para el producto.");
+                    continue;
+                }
+
+                
+                let precio = parseFloat(prompt("Ingrese el precio del producto:"));
+                if (isNaN(precio) || precio <= 0) {
+                    alert("Por favor, ingrese un precio válido para el producto.");
+                    continue;
+                }
+
+                
+                totalVentas += precio;
+                productosVendidos += `${producto}: $${precio.toFixed(2)}<br>`;
+
+                
+                continuar = confirm("¿Desea registrar otra venta?");
+                
+            } while (continuar); 
+
+            let resumen = `
+                <h3>Resumen de Ventas:</h3>
+                <p><strong>Productos vendidos:</strong></p>
+                <div>${productosVendidos}</div>
+                <p><strong>Monto total de ventas: $${totalVentas.toFixed(2)}</strong></p>
+            `;
+            document.getElementById("resumen").innerHTML = resumen;
+        }
+    </script>
+
+</body>
+</html>

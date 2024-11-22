@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar los Años Cumplidos</title>
+</head>
+<body>
+
+    <h2>Mostrar los Años Cumplidos</h2>
+    <label for="edad">Ingrese su edad: </label>
+    <input type="number" id="edad" placeholder="Edad" />
+    <button onclick="mostrarAños()">Mostrar años cumplidos</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function mostrarAños() {
+            
+            let edad = document.getElementById("edad").value;
+
+            
+            if (edad === "" || isNaN(edad) || edad <= 0) {
+                document.getElementById("resultado").innerText = "Por favor ingresa una edad válida.";
+                return;
+            }
+
+            edad = parseInt(edad);  
+
+            
+            let añosCumplidos = "";
+            let i = 1;
+
+            
+            while (i <= edad) {
+                añosCumplidos += `Año ${i} <br>`; 
+                i++;  
+            }
+
+            
+            document.getElementById("resultado").innerHTML = añosCumplidos;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promedio de Exámenes</title>
+</head>
+<body>
+
+    <h2>Registro de Resultados de Exámenes</h2>
+    <button onclick="registrarResultados()">Ingresar Resultados</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function registrarResultados() {
+            let totalNotas = 0;  
+            let cantidadNotas = 0;  
+            let continuar = true;  
+
+            do {
+                
+                let nota = parseFloat(prompt("Ingrese la calificación del examen (0 a 10):"));
+
+                
+                if (isNaN(nota) || nota < 0 || nota > 10) {
+                    alert("Por favor, ingrese una calificación válida entre 0 y 10.");
+                    continue;
+                }
+
+                
+                totalNotas += nota;
+                cantidadNotas++;
+
+                
+                continuar = confirm("¿Desea ingresar otro resultado?");
+                
+            } while (continuar); 
+
+            
+            if (cantidadNotas > 0) {
+                let promedio = totalNotas / cantidadNotas;
+
+
+                let estado = promedio >= 6 ? "Aprobado" : "Reprobado";
+
+                
+                let resultado = `
+                    <h3>Resumen de Resultados:</h3>
+                    <p><strong>Promedio de calificaciones: </strong>${promedio.toFixed(2)}</p>
+                    <p><strong>Estado: </strong>${estado}</p>
+                `;
+                document.getElementById("resultado").innerHTML = resultado;
+            } else {
+                document.getElementById("resultado").innerText = "No se ingresaron resultados.";
+            }
+        }
+    </script>
+
+</body>
+</html>

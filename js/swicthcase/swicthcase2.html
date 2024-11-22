@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Ingrese su edad</h2>
+    <input type="number" id="edad" placeholder="Ingrese su edad" />
+    <button onclick="determinarCategoria()">Ver categoría</button>
+
+    <p id="resultado"></p>
+    <script>
+        function determinarCategoria() {
+            
+            let edad = document.getElementById("edad").value;
+
+            
+            if (edad === "" || isNaN(edad) || edad < 0) {
+                document.getElementById("resultado").innerText = "Por favor ingrese una edad válida.";
+                return;
+            }
+
+            
+            edad = parseInt(edad);
+
+            
+            let categoria;
+            switch (true) {
+                case (edad >= 0 && edad <= 12):
+                    categoria = "Niño";
+                    break;
+                case (edad >= 13 && edad <= 17):
+                    categoria = "Adolescente";
+                    break;
+                case (edad >= 18 && edad <= 64):
+                    categoria = "Adulto";
+                    break;
+                case (edad >= 65):
+                    categoria = "Adulto Mayor";
+                    break;
+                default:
+                    categoria = "Edad no válida";
+            }
+
+            
+            document.getElementById("resultado").innerText = `Su categoría es: ${categoria}`;
+        }
+    </script>
+
+</body>
+</html>

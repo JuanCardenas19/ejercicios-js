@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let precio = parseFloat(prompt("Ingresa el precio del producto:"));
+        let cantidad = parseInt(prompt("Ingresa la cantidad comprada:"));
+
+// Calcular el precio total sin descuento
+        let precioTotal = precio * cantidad;
+
+// Aplicar los descuentos según la cantidad comprada
+        if (cantidad >= 10) {
+        precioTotal *= 0.90; // Descuento del 10%
+        } else if (cantidad >= 5 && cantidad < 10) {
+        precioTotal *= 0.95; // Descuento del 5%
+        }
+
+// Mostrar el precio total a pagar después de aplicar el descuento
+        alert("El total a pagar es: $" + precioTotal.toFixed(2));
+    </script>
+</body>
+</html>

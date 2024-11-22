@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+    let equipo1Puntos = 0;
+    let equipo2Puntos = 0;
+
+
+    function mostrarClasificacion() {
+        console.log("Clasificación actual:");
+        console.log(`Equipo 1: ${equipo1Puntos} puntos`);
+        console.log(`Equipo 2: ${equipo2Puntos} puntos`);
+}
+
+
+    function actualizarPuntos(resultado) {
+        switch (resultado.toLowerCase()) {
+            case 'ganado':
+                equipo1Puntos += 3;
+                console.log("Equipo 1 gana 3 puntos.");
+                break;
+            case 'perdido':
+                equipo2Puntos += 3;
+                console.log("Equipo 2 gana 3 puntos.");
+                break;
+            case 'empate':
+                equipo1Puntos += 1;
+                equipo2Puntos += 1;
+                console.log("Empate, ambos equipos ganan 1 punto.");
+                break;
+            default:
+                console.log("Resultado inválido, por favor ingrese 'ganado', 'perdido' o 'empate'.");
+                return; 
+        }
+    
+        mostrarClasificacion();
+        }   
+
+
+    function registrarResultado() {
+        let resultado = prompt("Ingrese el resultado del partido (ganado, perdido o empate):");
+        actualizarPuntos(resultado);
+    }
+
+    registrarResultado();
+
+    </script>
+</body>
+</html>

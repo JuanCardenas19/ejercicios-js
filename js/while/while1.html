@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generar Secuencia Ascendente</title>
+</head>
+<body>
+
+    <h2>Generar una secuencia ascendente</h2>
+    <label for="numero">Ingresa un número entero positivo: </label>
+    <input type="number" id="numero" placeholder="Número entero" />
+    <button onclick="generarSecuencia()">Generar secuencia</button>
+
+    <p id="secuencia"></p>
+
+    <script>
+        function generarSecuencia() {
+            
+            let numero = document.getElementById("numero").value;
+
+            
+            if (numero === "" || isNaN(numero) || numero <= 0) {
+                document.getElementById("secuencia").innerText = "Por favor, ingresa un número entero positivo.";
+                return;
+            }
+
+            numero = parseInt(numero); 
+
+            let secuencia = "";
+            let i = 1;
+
+            
+            while (i <= numero) {
+                secuencia += i + " "; 
+                i++; 
+            }
+
+            
+            document.getElementById("secuencia").innerText = "Secuencia: " + secuencia.trim();
+        }
+    </script>
+
+</body>
+</html>
